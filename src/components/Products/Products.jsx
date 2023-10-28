@@ -28,7 +28,7 @@ const Products = () => {
             />
           ))}
         </div>
-        <div className="order_summery grid grid-cols-1 w-1/2 border mx-4">
+        <div className="order_summery grid grid-cols-1 w-1/2 border-2 border-black mx-4">
           <div className="orderSummery p-3">
             <div className="orderText flex justify-between">
               <h1 className="text-xl font-mono">Order summery</h1>
