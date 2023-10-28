@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCartPlus } from 'react-icons/fa';
 
 const Product = ({product}) => {
     console.log(product);
@@ -13,7 +14,7 @@ const Product = ({product}) => {
                     <h6 className='text-sm'>price : ${product.price}</h6>
                 </div>
                 <div className="button">
-                    <button className='bg-white p-1 px-3'>C</button>
+                    <button className='bg-white text-black p-2 '><FaCartPlus/></button>
                 </div>
             </div>
         </div>
