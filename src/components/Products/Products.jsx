@@ -4,13 +4,15 @@ import "../../App.css";
 import Product from "../Product/Product";
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [items, setItems] = useState([]);
   useEffect(() => {
     fetch("Data.json")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
   const handleAddToCart = (props) => {
-    console.log(props);
+    const newCart = [...items,props];
+    setItems(newCart)
   };
 
   return (
@@ -35,6 +37,21 @@ const Products = () => {
               <button className="bg-black rounded-sm text-white p-1">
                 <AiFillDelete />
               </button>
+            </div>
+            <div className="singleCart mt-10">
+                {
+                    items.map(item => <div 
+                    key={item.id}
+                    className="border-2 border-black flex justify-between px-3"
+                    >
+                        <img className="w-1/3" src={item.sideImage} alt="" />
+                        <div className="texts text-xs my-auto ">
+                        <p>{item.name} {item.color}</p>
+                        <p>Price : ${item.price}</p>
+                        </div>
+
+                    </div> )
+                }
             </div>
           </div>
         </div>

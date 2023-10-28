@@ -6,7 +6,7 @@ const Product = ({ product, handleAddToCart }) => {
   const { name, pairImage, color, price, sideImage } = product;
   return (
     <div
-      className="fullCard border-2 border-black hover:-translate-y-2 hover:shadow-xl transition-all"
+      className="fullCard border-2 border-black hover:-translate-y-1 hover:shadow-xl transition-all"
       onMouseEnter={() => {
         setFlipImage(true);
       }}
@@ -22,7 +22,7 @@ const Product = ({ product, handleAddToCart }) => {
         />
       </div>
       <div className="textContainer bg-black text-white py-4 px-2 flex justify-between">
-        <div className="text">
+        <div className="text font-mono">
           <h5 className="">
             {" "}
             {name} {color}{" "}
