@@ -8,6 +8,9 @@ const Products = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+  const handleAddToCart = (props) =>{
+    console.log(props);
+  }
 
   return (
     <div className="container mx-auto">
@@ -15,11 +18,13 @@ const Products = () => {
       <div className="allProducts flex">
         <div className="products grid grid-cols-4 gap-5">
           {products.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product key={product.id} product={product} handleAddToCart={handleAddToCart}/>
           ))}
         </div>
-        <div className="order_summery grid grid-cols-8 bg-red-600 mx-4">
-            Order summery
+        <div className="order_summery grid grid-cols-1 w-1/2 border mx-4">
+            <div className="orderSummery">
+                <h1>Order summery</h1>
+            </div>
             </div>
       </div>
     </div>
