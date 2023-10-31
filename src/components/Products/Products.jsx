@@ -4,6 +4,7 @@ import "../../App.css";
 import Product from "../Product/Product";
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [offer, setOffer] = useState(false)
   const [items, setItems] = useState([]);
   const [freeProducts, setFreeProducts] = useState({});
   useEffect(() => {
@@ -15,6 +16,16 @@ const Products = () => {
     const newCart = [...items, props];
     setItems(newCart);
   };
+
+  useEffect(() => {
+    if(items.length > 0 ){
+      setOffer(true);
+    }
+  },[items])
+  
+
+
+
 
   const handleOfferButton = () => {
     const randomNumber = Math.floor(Math.random() * products.length + 1);
@@ -63,21 +74,24 @@ const Products = () => {
             </div>
 
             <button
+              disabled={!offer}
               onClick={handleOfferButton}
-              className="bg-black hover:bg-slate-800 transition-all text-white text-xl w-full py-1 my-5"
+              className={offer ? 'bg-black hover:bg-slate-800 transition-all text-white text-xl w-full py-1 my-5': "bg-slate-200  transition-all text-white text-xl w-full py-1 my-5"}
             >
               Get one for me
             </button>
 
-          { Object.keys(freeProducts).length > 0 && <div className="border-2 border-black flex justify-between px-3 mb-2">
-            <img className="w-1/3" src={freeProducts.sideImage} alt="" />
-            <div className="texts text-xs my-auto ">
-              <p>
-                {freeProducts.name} {freeProducts.color}
-              </p>
-              <p>Price : ${freeProducts.price}</p>
-            </div>
-          </div>}
+            {Object.keys(freeProducts).length > 0 && (
+              <div className="border-2 border-black flex justify-between px-3 mb-2">
+                <img className="w-1/3" src={freeProducts.sideImage} alt="" />
+                <div className="texts text-xs my-auto ">
+                  <p>
+                    {freeProducts.name} {freeProducts.color}
+                  </p>
+                  <p>Price : ${freeProducts.price}</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
