@@ -5,6 +5,7 @@ import Product from "../Product/Product";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [items, setItems] = useState([]);
+  const [offer, setOffer] = useState([])
   useEffect(() => {
     fetch("Data.json")
       .then((res) => res.json())
@@ -15,6 +16,11 @@ const Products = () => {
     setItems(newCart)
   };
 
+  const handleOfferButton = () => {
+    const randomNumber = Math.floor(Math.random() * products.length + 1);
+    const item = products[randomNumber]
+    setOffer(item);
+  }
 
 
 
@@ -56,6 +62,10 @@ const Products = () => {
                     </div> )
                 }
             </div>
+
+            <button onClick={handleOfferButton} className="bg-black hover:bg-slate-800 transition-all text-white text-xl w-full py-1">Get one for me</button>
+
+
           </div>
         </div>
       </div>
